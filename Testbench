@@ -1,0 +1,45 @@
+`timescale 1ns / 1ps  
+
+module tb_alu;
+//Inputs
+reg[7:0] A,B;
+reg[3:0] ALU_Sel;
+//Outputs
+wire[7:0] ALU_Out;
+wire CarryOut;
+// Verilog code for ALU
+integer i;
+alu test_unit(
+ A,B, // ALU 8-bit Inputs  
+
+ ALU_Sel,// ALU Selection
+ ALU_Out, // ALU 8-bit Output
+ CarryOut // Carry Out Flag
+);
+ initial begin
+ // hold reset state for 100 ns.
+ A=1 ; B=0; ALU_Sel=4'b0000; #100
+A=1 ; B=0; ALU_Sel=4'b0001; #100
+A=1 ; B=0; ALU_Sel=4'b0010; #100
+A=1 ; B=0; ALU_Sel=4'b0011; #100
+A=1 ; B=0; ALU_Sel=4'b0100; #100
+A=1 ; B=0; ALU_Sel=4'b0101; #100
+A=1 ; B=0; ALU_Sel=4'b0110; #100
+A=1 ; B=0; ALU_Sel=4'b0111; #100
+A=1 ; B=0; ALU_Sel=4'b1000; #100
+A=1 ; B=0; ALU_Sel=4'b1001; #100
+	 
+
+A=1 ; B=0; ALU_Sel=4’b1010;
+A=0 ; B=0; ALU_Sel=4'b1001; 
+
+A=1 ; B=0; ALU_Sel=4'b1010; 
+
+A=0 ; B=1; ALU_Sel=4'b1011;
+A=1 ; B=0; ALU_Sel=4'b1100;
+A=0 ; B=0; ALU_Sel=4'b1101;
+A=1 ; B=0; ALU_Sel=4'b1110;
+A=1 ; B=0; ALU_Sel=4'b1111;
+	 
+
+ end
